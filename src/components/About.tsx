@@ -1,5 +1,5 @@
 
-import { User, GraduationCap, Code, Brain, Languages, Laptop } from 'lucide-react';
+import { User, Code, Brain, Languages, Laptop } from 'lucide-react';
 
 const About = () => {
   const skills = [
@@ -22,27 +22,6 @@ const About = () => {
       icon: <Languages className="h-6 w-6 text-accent" />,
       title: "Languages",
       items: ["English", "Bengali"]
-    }
-  ];
-
-  const education = [
-    {
-      degree: "Bachelor of Science in Computer Science",
-      institution: "BRAC University",
-      period: "2021 – Expected Graduation: June 2025",
-      gpa: "3.72/4.00"
-    },
-    {
-      degree: "Higher Secondary Certificate (HSC)",
-      institution: "Science",
-      period: "2020",
-      gpa: "5.00/5.00"
-    },
-    {
-      degree: "Secondary School Certificate (SSC)",
-      institution: "Science",
-      period: "2018",
-      gpa: "5.00/5.00"
     }
   ];
 
@@ -103,26 +82,7 @@ const About = () => {
             </div>
           </div>
           
-          <div className="w-full md:w-1/2 space-y-12">
-            <div>
-              <div className="inline-flex items-center gap-2 text-sm font-medium text-accent mb-2">
-                <GraduationCap className="h-4 w-4" />
-                <span>EDUCATION</span>
-              </div>
-              <div className="space-y-6">
-                {education.map((item, index) => (
-                  <div key={index} className="glass-morph rounded-xl p-6 card-hover">
-                    <h3 className="text-xl font-bold mb-1">{item.degree}</h3>
-                    <p className="text-foreground/70 mb-1">{item.institution}</p>
-                    <p className="text-sm text-foreground/60 mb-2">{item.period}</p>
-                    <div className="inline-block px-3 py-1 rounded-full bg-accent/10 text-accent text-sm font-medium">
-                      GPA: {item.gpa}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            
+          <div className="w-full md:w-1/2">
             <div>
               <div className="inline-flex items-center gap-2 text-sm font-medium text-accent mb-2">
                 <Code className="h-4 w-4" />
