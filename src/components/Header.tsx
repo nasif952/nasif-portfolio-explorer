@@ -51,7 +51,7 @@ const Header = () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
         >
-          Nasif Ahmed
+          Nasif Ahmed Nafi
         </a>
         
         {/* Desktop Navigation */}
