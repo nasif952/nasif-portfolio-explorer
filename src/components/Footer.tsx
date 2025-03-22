@@ -31,9 +31,9 @@ const Footer = () => {
             © {new Date().getFullYear()} Nasif Ahmed Nafi. All rights reserved.
           </p>
           
-          <p className="text-foreground/60 text-sm">
+          <div className="text-foreground/60 text-sm max-w-md">
             "AI has never taken anyone's job; people who fail to adapt will simply become less relevant."
-          </p>
+          </div>
         </div>
       </div>
     </footer>
