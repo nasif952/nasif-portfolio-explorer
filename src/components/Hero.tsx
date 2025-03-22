@@ -26,7 +26,7 @@ const Hero = () => {
         </span>
         
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold leading-tight mb-6 opacity-0 animate-fade-in animate-delay-200">
-          Hi, I'm <span className="text-accent">Nasif Ahmed Nafi</span>
+          Hi, I'm <span className="text-accent whitespace-nowrap">Nasif Ahmed Nafi</span>
         </h1>
         
         <p className="text-xl md:text-2xl text-foreground/80 mb-10 max-w-2xl mx-auto opacity-0 animate-fade-in animate-delay-300">
