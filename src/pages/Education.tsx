@@ -58,10 +58,7 @@ const Education = () => {
                   <div className="mt-6 p-6 rounded-lg bg-muted/50 border border-border/40">
                     <h4 className="text-lg font-semibold mb-3">Key Achievements & Courses</h4>
                     <ul className="space-y-2">
-                      <li className="flex items-start gap-2">
-                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent"></span>
-                        <span>Dean's List achievement for academic excellence</span>
-                      </li>
+
                       <li className="flex items-start gap-2">
                         <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent"></span>
                         <span>Advanced courses in AI, Machine Learning, and Data Structures</span>
