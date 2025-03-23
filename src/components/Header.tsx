@@ -97,7 +97,7 @@ const Header = () => {
           <Button 
             variant="outline"
             className="ml-2 border-accent text-accent hover:bg-accent hover:text-white transition-all duration-300"
-            onClick={() => window.open('/nasif-cv.pdf', '_blank')}
+            onClick={() => window.open('/public/cv/my-cv.pdf', '_blank')}
           >
             Resume
           </Button>
