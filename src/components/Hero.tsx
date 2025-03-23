@@ -46,6 +46,7 @@ const Hero = () => {
           <a 
             href="https://mail.google.com/mail/?view=cm&fs=1&to=nasif.ahmed95@gmail.com&su=Subject&body=Body%20Text%20Here"
             className="flex items-center gap-2 py-2.5 px-5 rounded-full font-medium bg-background border border-border hover:bg-muted/50 transition-transform hover:scale-105"
+            target="_blank"
           >
             Contact Me
           </a>
