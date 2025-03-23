@@ -79,7 +79,7 @@ const Projects = () => {
       image: "https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       technologies: ["WhatsApp API", "AI Automation", "NLP", "Email Integration"],
       category: "ai",
-      icon: "<MessageSquare className=\"h-10 w-10 text-accent p-2 bg-accent/10 rounded-md\" />"
+      icon: <MessageSquare className="h-10 w-10 text-accent p-2 bg-accent/10 rounded-md" />
     },
     {
       id: 9,
@@ -88,7 +88,7 @@ const Projects = () => {
       image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3",
       technologies: ["React", "RAG", "NLP", "Multilingual Support"],
       category: "web",
-      icon: "<MessageSquare className=\"h-10 w-10 text-accent p-2 bg-accent/10 rounded-md\" />"
+      icon: <MessageSquare className="h-10 w-10 text-accent p-2 bg-accent/10 rounded-md" />
     },
     {
       id: 10,
@@ -97,7 +97,7 @@ const Projects = () => {
       image: "https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       technologies: ["Automation", "Input Simulation", "Cross-Platform Compatibility"],
       category: "ai",
-      icon: "<MessageSquare className=\"h-10 w-10 text-accent p-2 bg-accent/10 rounded-md\" />"
+      icon: <MessageSquare className="h-10 w-10 text-accent p-2 bg-accent/10 rounded-md" />
     },
   ];
   
