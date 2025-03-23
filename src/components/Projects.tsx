@@ -70,7 +70,7 @@ const Projects = () => {
       image: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3",
       technologies: ["Telegram API", "AI Chatbot", "Image Recognition", "Multilingual NLP"],
       category: "ai",
-      icon: <MessageSquare className=\"h-10 w-10 text-accent p-2 bg-accent/10 rounded-md\" />
+      icon: <MessageSquare className="h-10 w-10 text-accent p-2 bg-accent/10 rounded-md" />
     },
     {
       id: 8,
