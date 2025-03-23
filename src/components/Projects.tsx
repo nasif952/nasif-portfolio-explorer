@@ -63,6 +63,42 @@ const Projects = () => {
       category: "ai",
       icon: <MessageSquare className="h-10 w-10 text-accent p-2 bg-accent/10 rounded-md" />
     },
+    {
+      "id": 7,
+      "title": "Smart Tele",
+      "description": "A Telegram bot that converses with AI, answers critical questions from images, manages and creates events for work-life balance automatically, and supports multiple languages.",
+      "image": "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3",
+      "technologies": ["Telegram API", "AI Chatbot", "Image Recognition", "Multilingual NLP"],
+      "category": "ai",
+      "icon": "<MessageSquare className=\"h-10 w-10 text-accent p-2 bg-accent/10 rounded-md\" />"
+    },
+    {
+      "id": 8,
+      "title": "Whatsai",
+      "description": "A highly intelligent WhatsApp integration that automates personal email workflows from sending to receiving and provides concise overviews.",
+      "image": "https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "technologies": ["WhatsApp API", "AI Automation", "NLP", "Email Integration"],
+      "category": "ai",
+      "icon": "<MessageSquare className=\"h-10 w-10 text-accent p-2 bg-accent/10 rounded-md\" />"
+    },
+    {
+      "id": 9,
+      "title": "Smart Rebot",
+      "description": "A React-based bot that understands English and Arabic, assisting potential clients by providing precise information from documents using a RAG-based approach.",
+      "image": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3",
+      "technologies": ["React", "RAG", "NLP", "Multilingual Support"],
+      "category": "web",
+      "icon": "<MessageSquare className=\"h-10 w-10 text-accent p-2 bg-accent/10 rounded-md\" />"
+    },
+    {
+      "id": 10,
+      "title": "Windo-Copycat",
+      "description": "An automation tool that replicates exact patterns of mouse, keyboard, and gamepad inputs to streamline repetitive tasks on a PC.",
+      "image": "https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "technologies": ["Automation", "Input Simulation", "Cross-Platform Compatibility"],
+      "category": "ai",
+      "icon": "<MessageSquare className=\"h-10 w-10 text-accent p-2 bg-accent/10 rounded-md\" />"
+    },
   ];
   
   const filteredProjects = activeFilter === 'all' 
