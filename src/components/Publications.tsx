@@ -1,5 +1,5 @@
 
-import { FileText, Book, Youtube, ExternalLink } from 'lucide-react';
+import { FileText, Book, Youtube, ExternalLink, Facebook } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 
 const Publications = () => {
@@ -23,18 +23,26 @@ const Publications = () => {
     {
       title: "HOW DLSS EVOLVED?",
       type: "video",
-      platform: "YouTube",
+      platform: "Facebook",
       description: "A video tutorial explaining the evolution of NVIDIA's DLSS technology.",
-      link: "#",
+      link: "https://www.facebook.com/watch/?v=1843659483055269&rdid=F7wtZrCPLPu74kI7",
       icon: <Youtube className="h-6 w-6" />
     },
     {
       title: "From Noise to Clear Images! Stable Diffusion Model Explained",
       type: "video",
-      platform: "YouTube",
+      platform: "Facebook",
       description: "A comprehensive tutorial on how Stable Diffusion models work.",
-      link: "#",
+      link: "https://www.facebook.com/watch/?v=620158114069755&rdid=wXmnoSqfIo72xLYR",
       icon: <Youtube className="h-6 w-6" />
+    },
+    {
+      title: "Understanding AI-Based Frame Generation & Interpolation",
+      type: "video",
+      platform: "Facebook",
+      description: "An overview of AI-driven frame generation and interpolation technologies, including RAFT, OFA, and DLSS 3.5.",
+      link: "https://www.facebook.com/talkingTech71/posts/pfbid02gnFfuWcXe1iZPTR9WAHWhA5Suiwt5UFRUws6bhQX6p24hxf5hg4RqWQ2iivu2Ljkl?rdid=ixBWrIbvmUhlalqN",
+      icon: <Facebook className="h-6 w-6" />
     }
   ];
 
