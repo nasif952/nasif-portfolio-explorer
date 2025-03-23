@@ -67,7 +67,7 @@ const Projects = () => {
       id: 7,
       title: "Smart Tele",
       description: "A Telegram bot that converses with AI, answers critical questions from images, manages and creates events for work-life balance automatically, and supports multiple languages.",
-      image: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3",
+      image: "https://images.unsplash.com/photo-1654764451028-6044fcb06ccb?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       technologies: ["Telegram API", "AI Chatbot", "Image Recognition", "Multilingual NLP"],
       category: "ai",
       icon: <MessageSquare className="h-10 w-10 text-accent p-2 bg-accent/10 rounded-md" />
@@ -95,7 +95,7 @@ const Projects = () => {
       title: "Windo-Copycat",
       description: "An automation tool that replicates exact patterns of mouse, keyboard, and gamepad inputs to streamline repetitive tasks on a PC.",
       image: "https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      technologies: ["Automation", "Input Simulation", "Cross-Platform Compatibility"],
+      technologies: ["Automation", "Input Simulation"],
       category: "ai",
       icon: <MessageSquare className="h-10 w-10 text-accent p-2 bg-accent/10 rounded-md" />
     },
