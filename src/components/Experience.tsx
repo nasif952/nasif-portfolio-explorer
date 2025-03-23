@@ -3,10 +3,18 @@ import { Briefcase, Award } from 'lucide-react';
 
 const Experience = () => {
   const experiences = [
+
+    {
+      title: "AI Engineer",
+      company: "Diamond AI Tech",
+      period: "2025 - Present",
+      description: "As an AI Engineer at Diamond AI Tech, I specialize in automating workflows, integrating in-house AI applications, and utilizing market standard tools for seamless automation. My focus is on enhancing operational efficiency through innovative AI solutions and workflow automation.",
+      tags: ["Automation", "Ai Workflows", "AI Integration", "In-House AI Applications", "Tech Solutions"]
+    },
     {
       title: "Research Analyst",
       company: "Techolic Bangladesh",
-      period: "2022 - Present",
+      period: "2023 - Present",
       description: "Conducted in-depth benchmarking and tech product reviews. Provided expert guidance on purchasing decisions. Ensured accuracy and reliability in evaluations.",
       tags: ["Product Analysis", "Tech Reviews", "Benchmarking"]
     },

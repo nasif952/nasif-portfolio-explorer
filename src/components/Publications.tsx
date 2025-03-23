@@ -26,7 +26,7 @@ const Publications = () => {
       platform: "Facebook",
       description: "A video tutorial explaining the evolution of NVIDIA's DLSS technology.",
       link: "https://www.facebook.com/watch/?v=1843659483055269&rdid=F7wtZrCPLPu74kI7",
-      icon: <Youtube className="h-6 w-6" />
+      icon: <Facebook className="h-6 w-6" />
     },
     {
       title: "From Noise to Clear Images! Stable Diffusion Model Explained",
