@@ -3,7 +3,6 @@ import { Briefcase, Award } from 'lucide-react';
 
 const Experience = () => {
   const experiences = [
-
     {
       title: "AI Engineer",
       company: "Diamond AI Tech",
@@ -35,7 +34,12 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="section-padding px-4 md:px-6">
+    <section id="experience" className="section-padding px-4 md:px-6 relative overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-0 left-0 w-full h-full bg-[url('https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&q=80&w=2070')] bg-cover bg-fixed opacity-[0.03]"></div>
+      </div>
+      
       <div className="container mx-auto max-w-5xl">
         <div className="mb-12 text-center">
           <span className="inline-block py-1 px-3 mb-4 text-sm font-medium rounded-full bg-accent/10 text-accent">
@@ -49,7 +53,7 @@ const Experience = () => {
         
         <div className="relative">
           {/* Timeline line */}
-          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-border -ml-px md:ml-0"></div>
+          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-accent/5 via-accent/40 to-accent/5 -ml-px md:ml-0"></div>
           
           {/* Experience items */}
           <div className="space-y-12">
@@ -59,9 +63,11 @@ const Experience = () => {
                 className={`relative flex flex-col md:flex-row ${
                   index % 2 === 0 ? 'md:flex-row-reverse' : ''
                 }`}
+                data-aos={index % 2 === 0 ? 'fade-left' : 'fade-right'}
+                data-aos-delay={index * 100}
               >
                 {/* Timeline dot */}
-                <div className="absolute left-0 md:left-1/2 w-8 h-8 bg-background rounded-full border-4 border-accent -ml-4 md:ml-[-1rem] z-10 flex items-center justify-center">
+                <div className="absolute left-0 md:left-1/2 w-8 h-8 bg-background rounded-full border-4 border-accent -ml-4 md:ml-[-1rem] z-10 flex items-center justify-center shadow-lg shadow-accent/20">
                   {index === 0 ? (
                     <Award className="h-3 w-3 text-accent" />
                   ) : (
@@ -73,9 +79,9 @@ const Experience = () => {
                 <div className={`md:w-1/2 pl-12 md:pl-0 ${
                   index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'
                 }`}>
-                  <div className="glass-morph rounded-xl p-6 card-hover">
+                  <div className="glass-morph rounded-xl p-6 card-hover backdrop-blur-sm bg-white/10 dark:bg-black/10 border border-white/20 shadow-xl hover:shadow-2xl transition-all duration-500">
                     <div className="mb-4">
-                      <h3 className="text-xl font-bold">{exp.title}</h3>
+                      <h3 className="text-xl font-bold text-foreground">{exp.title}</h3>
                       <p className="text-accent font-medium">{exp.company}</p>
                       <p className="text-sm text-foreground/60">{exp.period}</p>
                     </div>
@@ -86,7 +92,7 @@ const Experience = () => {
                       {exp.tags.map((tag, i) => (
                         <span 
                           key={i}
-                          className="px-3 py-1 rounded-full text-xs font-medium bg-accent/10 text-accent"
+                          className="px-3 py-1 rounded-full text-xs font-medium bg-accent/10 text-accent transition-transform hover:scale-105"
                         >
                           {tag}
                         </span>
