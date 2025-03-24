@@ -1,6 +1,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -86,6 +87,7 @@
 
   body {
     @apply bg-background text-foreground font-sans;
+    scroll-behavior: smooth;
   }
 
   /* Custom scrollbar */
@@ -108,15 +110,23 @@
 
 @layer components {
   .glass-morph {
-    @apply bg-white/80 dark:bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg dark:shadow-black/30;
+    @apply bg-white/80 dark:bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg dark:shadow-black/30 hover:shadow-xl transition-all duration-300;
   }
   
   .section-heading {
-    @apply text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6 text-center;
+    @apply text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6 text-center relative;
+  }
+  
+  .section-heading::after {
+    @apply content-[''] absolute w-20 h-1 bg-accent/70 bottom-[-10px] left-1/2 -translate-x-1/2 rounded-full;
   }
   
   .card-hover {
     @apply transition-all duration-300 hover:translate-y-[-5px] hover:shadow-xl;
+  }
+  
+  .card-tilt {
+    @apply transition-all duration-300 transform perspective-1000 hover:shadow-xl hover:[transform:perspective(1000px)_rotateX(2deg)_rotateY(-2deg)];
   }
   
   .nav-link {
@@ -155,12 +165,32 @@
     animation-delay: 500ms;
   }
   
+  .animate-delay-700 {
+    animation-delay: 700ms;
+  }
+  
+  .animate-delay-1000 {
+    animation-delay: 1000ms;
+  }
+  
   .text-gradient {
     @apply bg-gradient-to-r from-accent via-accent/80 to-primary bg-clip-text text-transparent;
   }
   
   .bg-gradient-soft {
     @apply bg-gradient-to-tr from-background via-accent/5 to-background;
+  }
+
+  .btn-gradient {
+    @apply bg-gradient-to-r from-accent to-accent/70 hover:from-accent/90 hover:to-accent text-white transition-all duration-300 hover:shadow-lg hover:shadow-accent/20;
+  }
+  
+  .typing-container {
+    @apply relative inline-block overflow-hidden whitespace-nowrap border-r-2 border-accent animate-typing;
+  }
+  
+  .parallax {
+    @apply translate-y-0 transition-transform duration-1000 ease-out;
   }
 }
 
@@ -175,4 +205,44 @@
 
 .animate-scale-in {
   animation: scale-in 0.8s ease-out forwards;
+}
+
+/* For 3D tilt effect with JS */
+.tilt-card {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: transform 0.1s ease;
+}
+
+.tilt-card-content {
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease;
+}
+
+.tilt-card-shine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at var(--x) var(--y), rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 50%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Loader */
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  border-top-color: hsl(var(--accent));
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

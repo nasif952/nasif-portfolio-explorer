@@ -1,12 +1,17 @@
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { ExternalLink, Github, Database, Server, Globe, BookOpen, Bot, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { motion } from 'framer-motion';
+import TiltCard from './TiltCard';
+import { useInView } from 'framer-motion';
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
   
   const projects = [
     {
@@ -106,19 +111,34 @@ const Projects = () => {
     : projects.filter(project => project.category === activeFilter);
 
   return (
-    <section id="projects" className="section-padding bg-muted/30 px-4 md:px-6">
+    <section id="projects" ref={sectionRef} className="section-padding bg-gradient-to-b from-background to-muted/30 px-4 md:px-6 relative overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDYwIEwgNjAgNjAiIHN0cm9rZT0iIzIwMjAyMCIgc3Ryb2tlLXdpZHRoPSIwLjUiLz48cGF0aCBkPSJNIDYwIDAgTCAwIDAiIHN0cm9rZT0iIzIwMjAyMCIgc3Ryb2tlLXdpZHRoPSIwLjUiLz48cGF0aCBkPSJNIDYwIDAgTCA2MCA2MCIgc3Ryb2tlPSIjMjAyMDIwIiBzdHJva2Utd2lkdGg9IjAuNSIvPjxwYXRoIGQ9Ik0gMCA2MCBMIDAGMCI+PC9wYXRoPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIgb3BhY2l0eT0iMC4wNSI+PC9yZWN0Pjwvc3ZnPg==')] opacity-30"></div>
+      </div>
+      
       <div className="container mx-auto max-w-6xl">
-        <div className="mb-12 text-center">
+        <motion.div 
+          className="mb-12 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6 }}
+        >
           <span className="inline-block py-1 px-3 mb-4 text-sm font-medium rounded-full bg-accent/10 text-accent">
             MY WORK
           </span>
           <h2 className="section-heading">Featured Projects</h2>
-          <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
+          <p className="text-lg text-foreground/70 max-w-2xl mx-auto mt-4">
             A selection of my recent work spanning web development, AI, and machine learning applications.
           </p>
-        </div>
+        </motion.div>
         
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        <motion.div 
+          className="flex flex-wrap justify-center gap-3 mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
           <Button 
             variant={activeFilter === 'all' ? "default" : "outline"}
             onClick={() => setActiveFilter('all')}
@@ -140,45 +160,54 @@ const Projects = () => {
           >
             AI & ML
           </Button>
-        </div>
+        </motion.div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((project) => (
-            <Card key={project.id} className="overflow-hidden glass-morph card-hover border-none">
-              <div className="h-48 overflow-hidden">
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
-                  className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-110"
-                />
-              </div>
-              <CardHeader className="relative">
-                <div className="absolute -top-8 left-4">
-                  {project.icon}
-                </div>
-                <CardTitle className="mt-6">{project.title}</CardTitle>
-                <CardDescription>{project.description}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.map((tech, index) => (
-                    <Badge key={index} variant="outline" className="bg-background/80">
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-              <CardFooter className="flex justify-between">
-                <Button variant="ghost" size="sm" className="gap-1">
-                  <Github className="h-4 w-4" />
-                  <span>Code</span>
-                </Button>
-                <Button variant="ghost" size="sm" className="gap-1">
-                  <ExternalLink className="h-4 w-4" />
-                  <span>Demo</span>
-                </Button>
-              </CardFooter>
-            </Card>
+          {filteredProjects.map((project, index) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+            >
+              <TiltCard>
+                <Card className="overflow-hidden glass-morph border-none h-full flex flex-col">
+                  <div className="h-48 overflow-hidden">
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-110"
+                    />
+                  </div>
+                  <CardHeader className="relative">
+                    <div className="absolute -top-8 left-4">
+                      {project.icon}
+                    </div>
+                    <CardTitle className="mt-6">{project.title}</CardTitle>
+                    <CardDescription>{project.description}</CardDescription>
+                  </CardHeader>
+                  <CardContent className="flex-grow">
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.technologies.map((tech, index) => (
+                        <Badge key={index} variant="outline" className="bg-background/80">
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                  <CardFooter className="flex justify-between">
+                    <Button variant="ghost" size="sm" className="gap-1 group">
+                      <Github className="h-4 w-4 transition-transform group-hover:scale-110 group-hover:text-accent" />
+                      <span className="group-hover:text-accent transition-colors">Code</span>
+                    </Button>
+                    <Button variant="ghost" size="sm" className="gap-1 group">
+                      <ExternalLink className="h-4 w-4 transition-transform group-hover:scale-110 group-hover:text-accent" />
+                      <span className="group-hover:text-accent transition-colors">Demo</span>
+                    </Button>
+                  </CardFooter>
+                </Card>
+              </TiltCard>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -3,13 +3,18 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link, useLocation } from 'react-router-dom';
+import { ThemeToggle } from '@/components/ThemeToggle';
+import { motion } from 'framer-motion';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   const location = useLocation();
   
   useEffect(() => {
+    setIsLoaded(true); // Trigger animations after mount
+    
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
@@ -54,7 +59,10 @@ const Header = () => {
   };
 
   return (
-    <header 
+    <motion.header 
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, delay: 0.2 }}
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         isScrolled ? 'bg-background/80 backdrop-blur-lg shadow-sm py-3' : 'py-5'
       }`}
@@ -64,59 +72,96 @@ const Header = () => {
           to="/" 
           className="text-xl md:text-2xl font-display font-bold tracking-tight opacity-90 hover:opacity-100 transition-opacity"
         >
-          Nasif Ahmed Nafi
+          <motion.span
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent hover:from-primary hover:to-accent transition-all duration-500"
+          >
+            Nasif Ahmed Nafi
+          </motion.span>
         </Link>
         
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-6">
-          {navLinks.map((link) => (
-            link.href.startsWith('/#') ? (
-              <Link 
+        <div className="hidden md:flex items-center space-x-6">
+          <nav className="flex items-center space-x-6">
+            {navLinks.map((link, i) => (
+              <motion.div 
                 key={link.name}
-                to={link.href}
-                className="nav-link"
-                onClick={(e) => {
-                  if (location.pathname === '/') {
-                    e.preventDefault();
-                    scrollToSection(link.href);
-                  }
-                }}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 + (i * 0.1) }}
               >
-                {link.name}
-              </Link>
-            ) : (
-              <Link 
-                key={link.name}
-                to={link.href}
-                className="nav-link"
-              >
-                {link.name}
-              </Link>
-            )
-          ))}
-          <Button 
-            variant="outline"
-            className="ml-2 border-accent text-accent hover:bg-accent hover:text-white transition-all duration-300"
-            onClick={() => window.open('/cv_nasifahmednafi.pdf', '_blank')}
+                {link.href.startsWith('/#') ? (
+                  <Link 
+                    to={link.href}
+                    className="nav-link"
+                    onClick={(e) => {
+                      if (location.pathname === '/') {
+                        e.preventDefault();
+                        scrollToSection(link.href);
+                      }
+                    }}
+                  >
+                    {link.name}
+                  </Link>
+                ) : (
+                  <Link 
+                    to={link.href}
+                    className="nav-link"
+                  >
+                    {link.name}
+                  </Link>
+                )}
+              </motion.div>
+            ))}
+          </nav>
+          
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.8 }}
           >
-            Resume
-          </Button>
-        </nav>
+            <Button 
+              variant="outline"
+              className="ml-2 border-accent text-accent hover:bg-accent hover:text-white transition-all duration-300"
+              onClick={() => window.open('/cv_nasifahmednafi.pdf', '_blank')}
+            >
+              Resume
+            </Button>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.9 }}
+          >
+            <ThemeToggle />
+          </motion.div>
+        </div>
         
-        {/* Mobile Menu Button */}
-        <Button 
-          variant="ghost" 
-          size="icon"
-          className="md:hidden"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </Button>
+        {/* Mobile Navigation */}
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <Button 
+            variant="ghost" 
+            size="icon"
+            className="md:hidden"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </Button>
+        </div>
       </div>
       
-      {/* Mobile Navigation */}
+      {/* Mobile Navigation Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-background/95 backdrop-blur-lg shadow-lg border-t border-border/40 animate-fade-in">
+        <motion.div 
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          exit={{ opacity: 0, height: 0 }}
+          className="md:hidden absolute top-full left-0 w-full bg-background/95 backdrop-blur-lg shadow-lg border-t border-border/40"
+        >
           <nav className="container mx-auto px-4 py-4 flex flex-col space-y-4">
             {navLinks.map((link) => (
               link.href.startsWith('/#') ? (
@@ -147,14 +192,14 @@ const Header = () => {
             <Button 
               variant="outline"
               className="border-accent text-accent hover:bg-accent hover:text-white transition-all duration-300 w-full mt-2"
-              onClick={() => window.open('/nasif-cv.pdf', '_blank')}
+              onClick={() => window.open('/cv_nasifahmednafi.pdf', '_blank')}
             >
               Resume
             </Button>
           </nav>
-        </div>
+        </motion.div>
       )}
-    </header>
+    </motion.header>
   );
 };
 
